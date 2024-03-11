@@ -600,6 +600,10 @@ video {
   top: 3rem;
 }
 
+.right-5 {
+  right: 1.25rem;
+}
+
 .z-40 {
   z-index: 40;
 }
