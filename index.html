@@ -13,6 +13,10 @@
         rel="stylesheet">
     <title>Chat TailwindCSS</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: "Nunito Sans", sans-serif;
         }
@@ -41,38 +45,47 @@
             </ul>
         </nav>
         <nav class="flex flex-col items-center h-20 bg-white border border-b">
-            <div class="w-full flex items-center justify-between h-full px-5 py-3">
+            <div class="w-full relative flex items-center justify-between h-full px-5 py-3">
                 <div class="h-full">
                     <a href="#">
                         <img src="./images/logo/myedukes.png" alt="" class="h-full object-cover">
                     </a>
                 </div>
-                <ul class="flex items-center text-sm gap-5">
-                    <li>
-                        <a href="#" class="font-medium text-gray-800">Home</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-gray-700">Galeri</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-gray-700">Partisipan</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-gray-700">Artikel</a>
-                    </li>
-                </ul>
+                <button onclick="navbarToggle()" type="button" class="block md:hidden bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-xl transition ease-in-out">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div id="navbar" class="hidden absolute md:contents top-12 right-3 z-40 w-1/2 md:block md:w-auto">
+                    <ul class="flex flex-col p-4 md:p-0 shadow-lg md:shadow-none mt-4 border border-gray-100 rounded-xl bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white text-sm">
+                        <li>
+                            <a href="#"class="block py-2 px-3 text-white bg-blue-700 font-bold rounded-xl md:bg-transparent md:text-blue-700 md:p-0">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 px-3 text-gray-900 rounded-xl hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Galeri</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 px-3 text-gray-900 rounded-xl hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Partisipan</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 px-3 text-gray-900 rounded-xl hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Artikel</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <section class="flex h-full overflow-hidden">
             <div class="flex flex-col w-2/6 bg-white h-full">
-                <div class="flex items-center h-16 px-5 py-3">
+                <div class="flex justify-center items-center gap-3 h-16 px-5 py-3">
                     <div class="w-full relative">
                         <span
                             class="absolute top-1/2 left-4 transform -translate-y-1/2 mt-auto mb-auto text-slate-400"><i
                                 class="fa-solid fa-magnifying-glass"></i></span>
                         <input type="text" placeholder="Cari disini..."
-                            class="w-full bg-slate-50 text-sm border border-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-300 rounded-xl pl-10 pr-5 py-3">
+                            class="w-full bg-slate-50 text-gray-800 text-sm border border-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-300 rounded-xl pl-10 pr-5 py-3">
                     </div>
+                    <!-- <button
+                        class="flex items-center justify-center px-4 h-full bg-sky-500 hover:bg-sky-600 text-white rounded-xl transition ease-in-out">
+                        <i class="fa-solid fa-message"></i>
+                    </button> -->
                 </div>
                 <ul class="space-y-3 h-full p-3 overflow-y-auto">
                     <li
@@ -284,7 +297,7 @@
                 <div class="h-20 flex items-center bg-white px-3">
                     <div class="w-full flex gap-3">
                         <input type="text" placeholder="Tulis pesan anda disini..."
-                            class="w-full rounded-xl text-sm px-5 py-2 bg-gray-50 hover:bg-gray-50 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-300 transition ease-in-out">
+                            class="w-full rounded-xl text-sm text-gray-800 px-5 py-2 bg-gray-50 hover:bg-gray-50 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-300 transition ease-in-out">
                         <button
                             class="bg-sky-500 hover:bg-sky-600 transition ease-in-out text-white py-3 rounded-xl px-5">
                             <i class="fa-solid fa-paper-plane"></i>
@@ -298,6 +311,11 @@
     <script>
         const chatContainer = document.getElementById('chat_container');
         chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        const navbarToggle = () => {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('hidden');
+        }
     </script>
 </body>
 
